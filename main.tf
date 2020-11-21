@@ -80,14 +80,14 @@ data "aws_iam_policy_document" "service" {
 }
 
 resource "aws_iam_policy" "service" {
-  for_each = local.create_role && var.attach_policy_statements ? var.service_integrations : tomap({})
+  for_each = local.create_role && var.attach_policies_for_integrations ? var.service_integrations : tomap({})
 
   name   = "${local.role_name}-${each.key}"
   policy = data.aws_iam_policy_document.service[each.key].json
 }
 
 resource "aws_iam_policy_attachment" "service" {
-  for_each = local.create_role && var.attach_policy_statements ? var.service_integrations : tomap({})
+  for_each = local.create_role && var.attach_policies_for_integrations ? var.service_integrations : tomap({})
 
   name       = "${local.role_name}-${each.key}"
   roles      = [aws_iam_role.this[0].name]

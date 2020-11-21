@@ -18,7 +18,7 @@ This Terraform module is the part of [serverless.tf framework](https://github.co
   
 ```hcl
 module "step_function" {
-  source = "terraform-aws-modules/step-function/aws"
+  source = "terraform-aws-modules/step-functions/aws"
 
   name       = "my-step-function"
   definition = <<EOF
@@ -66,7 +66,7 @@ Example of `service_integrations` arguments:
 
 ```hcl
 module "step_function" {
-  source = "terraform-aws-modules/step-function/aws"
+  source = "terraform-aws-modules/step-functions/aws"
 
   # ... omitted
   service_integrations = {
@@ -106,7 +106,7 @@ Sometimes you need to have a way to create resources conditionally, so the solut
 
 ```hcl
 module "step_function" {
-  source = "terraform-aws-modules/step-function/aws"
+  source = "terraform-aws-modules/step-functions/aws"
 
   create      = false # to disable all resources
   create_role = false  # to control creation of the IAM role and policies required for Step Function
@@ -118,7 +118,7 @@ module "step_function" {
 
 ## Examples
 
-* [Complete](https://github.com/terraform-aws-modules/terraform-aws-step-function/tree/master/examples/complete) - Create Step Function and required IAM resources in various combinations with all supported features.
+* [Complete](https://github.com/terraform-aws-modules/terraform-aws-step-functions/tree/master/examples/complete) - Create Step Function and required IAM resources in various combinations with all supported features.
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
