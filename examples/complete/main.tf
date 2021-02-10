@@ -131,6 +131,8 @@ EOF
   tags = {
     Module = "step_function"
   }
+
+  type = "STANDARD"
 }
 
 ###########

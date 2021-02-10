@@ -14,6 +14,8 @@ resource "aws_sfn_state_machine" "this" {
   definition = var.definition
 
   tags = merge({ Name = var.name }, var.tags)
+
+  type = var.type
 }
 
 ###########
