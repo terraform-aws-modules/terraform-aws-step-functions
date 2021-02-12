@@ -36,6 +36,8 @@ module "step_function" {
 
   name = random_pet.this.id
 
+  type = "express"
+
   definition = local.definition_template
 
   service_integrations = {

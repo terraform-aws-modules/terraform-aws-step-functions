@@ -44,6 +44,17 @@ variable "tags" {
   default     = {}
 }
 
+variable "type" {
+  description = "Determines whether a Standard or Express state machine is created. The default is STANDARD. Valid Values: STANDARD | EXPRESS"
+  type        = string
+  default     = "STANDARD"
+
+  validation {
+    condition     = contains(["STANDARD", "EXPRESS"], upper(var.type))
+    error_message = "Step Function type must be one of the following (STANDARD | EXPRESS)."
+  }
+}
+
 ###########
 # IAM Role
 ###########
