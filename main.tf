@@ -1,5 +1,5 @@
 locals {
-  create_role = var.create && var.create_role && ! var.use_existing_role
+  create_role = var.create && var.create_role && !var.use_existing_role
   aws_region  = local.create_role && var.aws_region_assume_role == "" ? data.aws_region.current[0].name : var.aws_region_assume_role
 
   role_name = local.create_role ? coalesce(var.role_name, var.name) : null
@@ -13,9 +13,9 @@ resource "aws_sfn_state_machine" "this" {
   role_arn   = var.use_existing_role ? var.role_arn : aws_iam_role.this[0].arn
   definition = var.definition
 
-  tags = merge({ Name = var.name }, var.tags)
+  type = upper(var.type)
 
-  type = var.type
+  tags = merge({ Name = var.name }, var.tags)
 }
 
 ###########
