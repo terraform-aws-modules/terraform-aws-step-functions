@@ -50,11 +50,11 @@ EOF
     }
   }
 
+  type = "STANDARD"
+
   tags = {
     Module = "my"
   }
-  
-  type = "STANDARD"
 }
 ```
 
@@ -169,7 +169,7 @@ module "step_function" {
 | service\_integrations | Map of AWS service integrations to allow in IAM role policy | `any` | `{}` | no |
 | tags | Maps of tags to assign to the Step Function | `map(string)` | `{}` | no |
 | trusted\_entities | Step Function additional trusted entities for assuming roles (trust relationship) | `list(string)` | `[]` | no |
-  type | Determines whether a Standard or Express state machine is created. | `string` | `STANDARD` | no |
+| type | Determines whether a Standard or Express state machine is created. The default is STANDARD. Valid Values: STANDARD \| EXPRESS | `string` | `"STANDARD"` | no |
 | use\_existing\_role | Whether to use an existing IAM role for this Step Function | `bool` | `false` | no |
 
 ## Outputs
