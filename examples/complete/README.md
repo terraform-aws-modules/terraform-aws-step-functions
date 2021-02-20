@@ -22,7 +22,7 @@ Note that this example may create resources which cost money. Run `terraform des
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12.6 |
+| terraform | >= 0.13.1 |
 | aws | >= 3.27 |
 | random | >= 2 |
 
@@ -32,6 +32,20 @@ Note that this example may create resources which cost money. Run `terraform des
 |------|---------|
 | aws | >= 3.27 |
 | random | >= 2 |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| disabled_step_function | ../../ |  |
+| step_function | ../../ |  |
+
+## Resources
+
+| Name |
+|------|
+| [aws_sqs_queue](https://registry.terraform.io/providers/hashicorp/aws/3.27/docs/resources/sqs_queue) |
+| [random_pet](https://registry.terraform.io/providers/hashicorp/random/2/docs/resources/pet) |
 
 ## Inputs
 
@@ -47,5 +61,4 @@ No input.
 | this\_state\_machine\_creation\_date | The date the State Machine was created |
 | this\_state\_machine\_id | The ARN of the State Machine |
 | this\_state\_machine\_status | The current status of the State Machine |
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

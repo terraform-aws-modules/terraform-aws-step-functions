@@ -128,7 +128,7 @@ module "step_function" {
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12.6 |
+| terraform | >= 0.13.1 |
 | aws | >= 3.27 |
 
 ## Providers
@@ -136,6 +136,22 @@ module "step_function" {
 | Name | Version |
 |------|---------|
 | aws | >= 3.27 |
+
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_iam_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.27/docs/resources/iam_policy_attachment) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/3.27/docs/data-sources/iam_policy_document) |
+| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/3.27/docs/resources/iam_policy) |
+| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.27/docs/resources/iam_role_policy_attachment) |
+| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/3.27/docs/resources/iam_role) |
+| [aws_region](https://registry.terraform.io/providers/hashicorp/aws/3.27/docs/data-sources/region) |
+| [aws_sfn_state_machine](https://registry.terraform.io/providers/hashicorp/aws/3.27/docs/resources/sfn_state_machine) |
 
 ## Inputs
 
@@ -182,7 +198,6 @@ module "step_function" {
 | this\_state\_machine\_creation\_date | The date the Step Function was created |
 | this\_state\_machine\_id | The ARN of the Step Function |
 | this\_state\_machine\_status | The current status of the Step Function |
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Authors
