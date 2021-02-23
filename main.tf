@@ -1,5 +1,5 @@
 locals {
-  create_role = var.create && var.create_role && ! var.use_existing_role
+  create_role = var.create && var.create_role && !var.use_existing_role
   aws_region  = local.create_role && var.aws_region_assume_role == "" ? data.aws_region.current[0].name : var.aws_region_assume_role
 
   role_name = local.create_role ? coalesce(var.role_name, var.name) : null
