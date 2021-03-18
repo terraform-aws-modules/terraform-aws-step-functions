@@ -101,8 +101,8 @@ EOF
         {
             "Effect": "Allow",
             "Action": [
-				"cloudwatch:*",
-				"logs:*",
+                "cloudwatch:*",
+                "logs:*",
                 "xray:*"
             ],
             "Resource": ["*"]
