@@ -5,6 +5,17 @@ locals {
   role_name = local.create_role ? coalesce(var.role_name, var.name) : null
 }
 
+resource "aws_cloudwatch_log_group" "log_group_for_sfn" {
+  count = var.logging_configuration != null ? 1 : 0
+
+  name              = var.log_name
+  name_prefix       = var.log_name_prefix
+  retention_in_days = var.log_retention_in_days
+  kms_key_id        = var.log_kms_key_id
+
+  tags = merge(var.tags, var.log_tags)
+}
+
 resource "aws_sfn_state_machine" "this" {
   count = var.create ? 1 : 0
 
@@ -12,6 +23,15 @@ resource "aws_sfn_state_machine" "this" {
 
   role_arn   = var.use_existing_role ? var.role_arn : aws_iam_role.this[0].arn
   definition = var.definition
+
+  dynamic "logging_configuration" {
+    for_each = var.logging_configuration == null ? [] : list(var.logging_configuration)
+    content {
+      log_destination        = "${aws_cloudwatch_log_group.log_group_for_sfn[0].arn}:*"
+      include_execution_data = var.logging_configuration.include_execution_data
+      level                  = var.logging_configuration.level
+    }
+  }
 
   type = upper(var.type)
 

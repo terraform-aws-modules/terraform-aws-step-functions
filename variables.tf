@@ -146,6 +146,57 @@ variable "attach_policies" {
   default     = false
 }
 
+
+##########################
+# Cloudwatch Logging
+##########################
+variable "logging_configuration" {
+  description = "Defines what execution history events are logged and where they are logged"
+  type = object({
+    include_execution_data = bool
+    level                  = string
+  })
+  default = {
+    include_execution_data = false
+    level                  = "OFF"
+  }
+
+  validation {
+    condition     = contains(["ALL", "ERROR", "FATAL", "OFF"], upper(var.logging_configuration.level))
+    error_message = "Step Function logging configuration level must be one of the following: (ALL | ERROR | FATAL | OFF)."
+  }
+}
+
+variable "log_name" {
+  description = "The name of the log group."
+  type        = string
+  default     = null
+}
+
+variable "log_name_prefix" {
+  description = "Creates a unique name beginning with the specified prefix. Conflicts with name."
+  type        = string
+  default     = null
+}
+
+variable "log_retention_in_days" {
+  description = "Specifies the number of days you want to retain log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, and 0."
+  type        = number
+  default     = 0
+}
+
+variable "log_kms_key_id" {
+  description = "The ARN of the KMS Key to use when encrypting log data."
+  type        = string
+  default     = null
+}
+
+variable "log_tags" {
+  description = "A map of tags to assign to the Cloudwatch logging resource."
+  type        = map(string)
+  default     = {}
+}
+
 variable "number_of_policy_jsons" {
   description = "Number of policies JSON to attach to IAM role"
   type        = number
