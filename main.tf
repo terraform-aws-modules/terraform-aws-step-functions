@@ -6,7 +6,7 @@ locals {
 }
 
 resource "aws_cloudwatch_log_group" "log_group_for_sfn" {
-  count = var.logging_configuration.level != "OFF" ? 1 : 0
+  count = var.logging_configuration.level == "OFF" ? 0 : 1
 
   name              = var.log_name
   name_prefix       = var.log_name_prefix
