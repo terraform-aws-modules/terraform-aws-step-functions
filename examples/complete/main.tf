@@ -42,6 +42,7 @@ module "step_function" {
 
   log_name = "step-function/log-group"
   logging_configuration = {
+    log_destination        = null
     include_execution_data = true
     level                  = "ALL"
   }

@@ -6,7 +6,7 @@ locals {
 }
 
 resource "aws_cloudwatch_log_group" "log_group_for_sfn" {
-  count = var.logging_configuration.level == "OFF" ? 0 : 1
+  count = var.logging_configuration.log_destination != null || var.logging_configuration.level == "OFF" ? 0 : 1
 
   name              = var.log_name
   name_prefix       = var.log_name_prefix
@@ -25,9 +25,9 @@ resource "aws_sfn_state_machine" "this" {
   definition = var.definition
 
   dynamic "logging_configuration" {
-    for_each = var.logging_configuration.level == "OFF" ? [] : list(var.logging_configuration)
+    for_each = var.logging_configuration.level == "OFF" ? [] : [var.logging_configuration]
     content {
-      log_destination        = "${aws_cloudwatch_log_group.log_group_for_sfn[0].arn}:*"
+      log_destination        = var.logging_configuration.log_destination != null ? var.logging_configuration.log_destination : "${aws_cloudwatch_log_group.log_group_for_sfn[0].arn}:*"
       include_execution_data = var.logging_configuration.include_execution_data
       level                  = var.logging_configuration.level
     }
