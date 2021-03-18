@@ -193,6 +193,7 @@ variable "attach_policies" {
   type        = bool
   default     = false
 }
+
 variable "number_of_policy_jsons" {
   description = "Number of policies JSON to attach to IAM role"
   type        = number
