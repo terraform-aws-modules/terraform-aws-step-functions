@@ -118,91 +118,87 @@ module "step_function" {
 - [Complete](https://github.com/terraform-aws-modules/terraform-aws-step-functions/tree/master/examples/complete) - Create Step Function and required IAM resources in various combinations with all supported features.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 ## Requirements
 
-| Name                                                                     | Version   |
-| ------------------------------------------------------------------------ | --------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 0.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement_aws)                   | >= 3.27   |
+| Name | Version |
+|------|---------|
+| terraform | >= 0.13.1 |
+| aws | >= 3.27 |
 
 ## Providers
 
-| Name                                             | Version |
-| ------------------------------------------------ | ------- |
-| <a name="provider_aws"></a> [aws](#provider_aws) | >= 3.27 |
+| Name | Version |
+|------|---------|
+| aws | >= 3.27 |
 
 ## Modules
 
-No modules.
+No Modules.
 
 ## Resources
 
-| Name                                                                                                                                                     | Type        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| [aws_iam_policy.additional_inline](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)                               | resource    |
-| [aws_iam_policy.additional_json](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)                                 | resource    |
-| [aws_iam_policy.additional_jsons](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)                                | resource    |
-| [aws_iam_policy.service](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy)                                         | resource    |
-| [aws_iam_policy_attachment.additional_inline](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment)         | resource    |
-| [aws_iam_policy_attachment.additional_json](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment)           | resource    |
-| [aws_iam_policy_attachment.additional_jsons](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment)          | resource    |
-| [aws_iam_policy_attachment.service](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment)                   | resource    |
-| [aws_iam_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)                                                | resource    |
-| [aws_iam_role_policy_attachment.additional_many](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource    |
-| [aws_iam_role_policy_attachment.additional_one](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment)  | resource    |
-| [aws_sfn_state_machine.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sfn_state_machine)                              | resource    |
-| [aws_iam_policy_document.additional_inline](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document)          | data source |
-| [aws_iam_policy_document.assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document)                | data source |
-| [aws_iam_policy_document.service](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document)                    | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region)                                              | data source |
+| Name |
+|------|
+| [aws_cloudwatch_log_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) |
+| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
+| [aws_iam_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
+| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
+| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) |
+| [aws_region](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) |
+| [aws_sfn_state_machine](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sfn_state_machine) |
 
 ## Inputs
 
-| Name                                                                                                                              | Description                                                                                                                   | Type           | Default      | Required |
-| --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------- | ------------ | :------: |
-| <a name="input_attach_policies"></a> [attach_policies](#input_attach_policies)                                                    | Controls whether list of policies should be added to IAM role                                                                 | `bool`         | `false`      |    no    |
-| <a name="input_attach_policies_for_integrations"></a> [attach_policies_for_integrations](#input_attach_policies_for_integrations) | Whether to attach AWS Service policies to IAM role                                                                            | `bool`         | `true`       |    no    |
-| <a name="input_attach_policy"></a> [attach_policy](#input_attach_policy)                                                          | Controls whether policy should be added to IAM role                                                                           | `bool`         | `false`      |    no    |
-| <a name="input_attach_policy_json"></a> [attach_policy_json](#input_attach_policy_json)                                           | Controls whether policy_json should be added to IAM role                                                                      | `bool`         | `false`      |    no    |
-| <a name="input_attach_policy_jsons"></a> [attach_policy_jsons](#input_attach_policy_jsons)                                        | Controls whether policy_jsons should be added to IAM role                                                                     | `bool`         | `false`      |    no    |
-| <a name="input_attach_policy_statements"></a> [attach_policy_statements](#input_attach_policy_statements)                         | Controls whether policy_statements should be added to IAM role                                                                | `bool`         | `false`      |    no    |
-| <a name="input_aws_region_assume_role"></a> [aws_region_assume_role](#input_aws_region_assume_role)                               | Name of AWS regions where IAM role can be assumed by the Step Function                                                        | `string`       | `""`         |    no    |
-| <a name="input_create"></a> [create](#input_create)                                                                               | Whether to create Step Function resource                                                                                      | `bool`         | `true`       |    no    |
-| <a name="input_create_role"></a> [create_role](#input_create_role)                                                                | Whether to create IAM role for the Step Function                                                                              | `bool`         | `true`       |    no    |
-| <a name="input_definition"></a> [definition](#input_definition)                                                                   | The Amazon States Language definition of the Step Function                                                                    | `string`       | `""`         |    no    |
-| <a name="input_name"></a> [name](#input_name)                                                                                     | The name of the Step Function                                                                                                 | `string`       | `""`         |    no    |
-| <a name="input_number_of_policies"></a> [number_of_policies](#input_number_of_policies)                                           | Number of policies to attach to IAM role                                                                                      | `number`       | `0`          |    no    |
-| <a name="input_number_of_policy_jsons"></a> [number_of_policy_jsons](#input_number_of_policy_jsons)                               | Number of policies JSON to attach to IAM role                                                                                 | `number`       | `0`          |    no    |
-| <a name="input_policies"></a> [policies](#input_policies)                                                                         | List of policy statements ARN to attach to IAM role                                                                           | `list(string)` | `[]`         |    no    |
-| <a name="input_policy"></a> [policy](#input_policy)                                                                               | An additional policy document ARN to attach to IAM role                                                                       | `string`       | `null`       |    no    |
-| <a name="input_policy_json"></a> [policy_json](#input_policy_json)                                                                | An additional policy document as JSON to attach to IAM role                                                                   | `string`       | `null`       |    no    |
-| <a name="input_policy_jsons"></a> [policy_jsons](#input_policy_jsons)                                                             | List of additional policy documents as JSON to attach to IAM role                                                             | `list(string)` | `[]`         |    no    |
-| <a name="input_policy_statements"></a> [policy_statements](#input_policy_statements)                                              | Map of dynamic policy statements to attach to IAM role                                                                        | `any`          | `{}`         |    no    |
-| <a name="input_role_arn"></a> [role_arn](#input_role_arn)                                                                         | The Amazon Resource Name (ARN) of the IAM role to use for this Step Function                                                  | `string`       | `""`         |    no    |
-| <a name="input_role_description"></a> [role_description](#input_role_description)                                                 | Description of IAM role to use for Step Function                                                                              | `string`       | `null`       |    no    |
-| <a name="input_role_force_detach_policies"></a> [role_force_detach_policies](#input_role_force_detach_policies)                   | Specifies to force detaching any policies the IAM role has before destroying it.                                              | `bool`         | `true`       |    no    |
-| <a name="input_role_name"></a> [role_name](#input_role_name)                                                                      | Name of IAM role to use for Step Function                                                                                     | `string`       | `null`       |    no    |
-| <a name="input_role_path"></a> [role_path](#input_role_path)                                                                      | Path of IAM role to use for Step Function                                                                                     | `string`       | `null`       |    no    |
-| <a name="input_role_permissions_boundary"></a> [role_permissions_boundary](#input_role_permissions_boundary)                      | The ARN of the policy that is used to set the permissions boundary for the IAM role used by Step Function                     | `string`       | `null`       |    no    |
-| <a name="input_role_tags"></a> [role_tags](#input_role_tags)                                                                      | A map of tags to assign to IAM role                                                                                           | `map(string)`  | `{}`         |    no    |
-| <a name="input_service_integrations"></a> [service_integrations](#input_service_integrations)                                     | Map of AWS service integrations to allow in IAM role policy                                                                   | `any`          | `{}`         |    no    |
-| <a name="input_tags"></a> [tags](#input_tags)                                                                                     | Maps of tags to assign to the Step Function                                                                                   | `map(string)`  | `{}`         |    no    |
-| <a name="input_trusted_entities"></a> [trusted_entities](#input_trusted_entities)                                                 | Step Function additional trusted entities for assuming roles (trust relationship)                                             | `list(string)` | `[]`         |    no    |
-| <a name="input_type"></a> [type](#input_type)                                                                                     | Determines whether a Standard or Express state machine is created. The default is STANDARD. Valid Values: STANDARD \| EXPRESS | `string`       | `"STANDARD"` |    no    |
-| <a name="input_use_existing_role"></a> [use_existing_role](#input_use_existing_role)                                              | Whether to use an existing IAM role for this Step Function                                                                    | `bool`         | `false`      |    no    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| attach\_policies | Controls whether list of policies should be added to IAM role | `bool` | `false` | no |
+| attach\_policies\_for\_integrations | Whether to attach AWS Service policies to IAM role | `bool` | `true` | no |
+| attach\_policy | Controls whether policy should be added to IAM role | `bool` | `false` | no |
+| attach\_policy\_json | Controls whether policy\_json should be added to IAM role | `bool` | `false` | no |
+| attach\_policy\_jsons | Controls whether policy\_jsons should be added to IAM role | `bool` | `false` | no |
+| attach\_policy\_statements | Controls whether policy\_statements should be added to IAM role | `bool` | `false` | no |
+| aws\_region\_assume\_role | Name of AWS regions where IAM role can be assumed by the Step Function | `string` | `""` | no |
+| create | Whether to create Step Function resource | `bool` | `true` | no |
+| create\_role | Whether to create IAM role for the Step Function | `bool` | `true` | no |
+| definition | The Amazon States Language definition of the Step Function | `string` | `""` | no |
+| log\_kms\_key\_id | The ARN of the KMS Key to use when encrypting log data. | `string` | `null` | no |
+| log\_name | The name of the log group. | `string` | `null` | no |
+| log\_name\_prefix | Creates a unique name beginning with the specified prefix. Conflicts with name. | `string` | `null` | no |
+| log\_retention\_in\_days | Specifies the number of days you want to retain log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, and 0. | `number` | `0` | no |
+| log\_tags | A map of tags to assign to the Cloudwatch logging resource. | `map(string)` | `{}` | no |
+| logging\_configuration | Defines what execution history events are logged and where they are logged | `map(string)` | <pre>{<br>  "include_execution_data": false,<br>  "level": "OFF",<br>  "log_destination": null<br>}</pre> | no |
+| name | The name of the Step Function | `string` | `""` | no |
+| number\_of\_policies | Number of policies to attach to IAM role | `number` | `0` | no |
+| number\_of\_policy\_jsons | Number of policies JSON to attach to IAM role | `number` | `0` | no |
+| policies | List of policy statements ARN to attach to IAM role | `list(string)` | `[]` | no |
+| policy | An additional policy document ARN to attach to IAM role | `string` | `null` | no |
+| policy\_json | An additional policy document as JSON to attach to IAM role | `string` | `null` | no |
+| policy\_jsons | List of additional policy documents as JSON to attach to IAM role | `list(string)` | `[]` | no |
+| policy\_statements | Map of dynamic policy statements to attach to IAM role | `any` | `{}` | no |
+| role\_arn | The Amazon Resource Name (ARN) of the IAM role to use for this Step Function | `string` | `""` | no |
+| role\_description | Description of IAM role to use for Step Function | `string` | `null` | no |
+| role\_force\_detach\_policies | Specifies to force detaching any policies the IAM role has before destroying it. | `bool` | `true` | no |
+| role\_name | Name of IAM role to use for Step Function | `string` | `null` | no |
+| role\_path | Path of IAM role to use for Step Function | `string` | `null` | no |
+| role\_permissions\_boundary | The ARN of the policy that is used to set the permissions boundary for the IAM role used by Step Function | `string` | `null` | no |
+| role\_tags | A map of tags to assign to IAM role | `map(string)` | `{}` | no |
+| service\_integrations | Map of AWS service integrations to allow in IAM role policy | `any` | `{}` | no |
+| tags | Maps of tags to assign to the Step Function | `map(string)` | `{}` | no |
+| trusted\_entities | Step Function additional trusted entities for assuming roles (trust relationship) | `list(string)` | `[]` | no |
+| type | Determines whether a Standard or Express state machine is created. The default is STANDARD. Valid Values: STANDARD \| EXPRESS | `string` | `"STANDARD"` | no |
+| use\_existing\_role | Whether to use an existing IAM role for this Step Function | `bool` | `false` | no |
 
 ## Outputs
 
-| Name                                                                                                                                | Description                                            |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| <a name="output_this_role_arn"></a> [this_role_arn](#output_this_role_arn)                                                          | The ARN of the IAM role created for the Step Function  |
-| <a name="output_this_role_name"></a> [this_role_name](#output_this_role_name)                                                       | The name of the IAM role created for the Step Function |
-| <a name="output_this_state_machine_arn"></a> [this_state_machine_arn](#output_this_state_machine_arn)                               | The ARN of the Step Function                           |
-| <a name="output_this_state_machine_creation_date"></a> [this_state_machine_creation_date](#output_this_state_machine_creation_date) | The date the Step Function was created                 |
-| <a name="output_this_state_machine_id"></a> [this_state_machine_id](#output_this_state_machine_id)                                  | The ARN of the Step Function                           |
-| <a name="output_this_state_machine_status"></a> [this_state_machine_status](#output_this_state_machine_status)                      | The current status of the Step Function                |
-
+| Name | Description |
+|------|-------------|
+| this\_role\_arn | The ARN of the IAM role created for the Step Function |
+| this\_role\_name | The name of the IAM role created for the Step Function |
+| this\_state\_machine\_arn | The ARN of the Step Function |
+| this\_state\_machine\_creation\_date | The date the Step Function was created |
+| this\_state\_machine\_id | The ARN of the Step Function |
+| this\_state\_machine\_status | The current status of the Step Function |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Authors
