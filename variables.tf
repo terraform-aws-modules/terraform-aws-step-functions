@@ -16,6 +16,12 @@ variable "use_existing_role" {
   default     = false
 }
 
+variable "use_existing_cloudwatch_log_group" {
+  description = "Whether to use an existing CloudWatch log group or create new"
+  type        = bool
+  default     = false
+}
+
 ################
 # Step Function
 ################
@@ -55,52 +61,44 @@ variable "type" {
   }
 }
 
-##########################
-# Cloudwatch Logging
-##########################
+#################
+# CloudWatch Logs
+#################
+
 variable "logging_configuration" {
   description = "Defines what execution history events are logged and where they are logged"
   type        = map(string)
-  default = {
-    log_destination        = null
-    include_execution_data = false
-    level                  = "OFF"
-  }
-
-  validation {
-    condition     = contains(["ALL", "ERROR", "FATAL", "OFF"], upper(var.logging_configuration.level))
-    error_message = "Step Function logging configuration level must be one of the following: (ALL | ERROR | FATAL | OFF)."
-  }
+  default     = {}
 }
 
-variable "log_name" {
-  description = "The name of the log group."
+variable "cloudwatch_log_group_name" {
+  description = "Name of Cloudwatch Logs group name to use."
   type        = string
   default     = null
 }
 
-variable "log_name_prefix" {
-  description = "Creates a unique name beginning with the specified prefix. Conflicts with name."
-  type        = string
-  default     = null
-}
-
-variable "log_retention_in_days" {
-  description = "Specifies the number of days you want to retain log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, and 0."
+variable "cloudwatch_log_group_retention_in_days" {
+  description = "Specifies the number of days you want to retain log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653."
   type        = number
-  default     = 0
+  default     = null
 }
 
-variable "log_kms_key_id" {
+variable "cloudwatch_log_group_kms_key_id" {
   description = "The ARN of the KMS Key to use when encrypting log data."
   type        = string
   default     = null
 }
 
-variable "log_tags" {
-  description = "A map of tags to assign to the Cloudwatch logging resource."
+variable "cloudwatch_log_group_tags" {
+  description = "A map of tags to assign to the resource."
   type        = map(string)
   default     = {}
+}
+
+variable "attach_cloudwatch_logs_policy" {
+  description = "Controls whether CloudWatch Logs policy should be added to IAM role for Lambda Function"
+  type        = bool
+  default     = true
 }
 
 ###########

@@ -30,7 +30,6 @@ locals {
 EOF
 }
 
-
 module "step_function" {
   source = "../../"
 
@@ -40,9 +39,7 @@ module "step_function" {
 
   definition = local.definition_template
 
-  log_name = "step-function/log-group"
   logging_configuration = {
-    log_destination        = null
     include_execution_data = true
     level                  = "ALL"
   }
@@ -68,9 +65,10 @@ module "step_function" {
       xray = true
     }
 
-    no_tasks = {
-      deny_all = true
-    }
+    #    # NB: This will "Deny" everything (including logging)!
+    #    no_tasks = {
+    #      deny_all = true
+    #    }
   }
 
   ######################
@@ -102,8 +100,6 @@ EOF
         {
             "Effect": "Allow",
             "Action": [
-                "cloudwatch:*",
-                "logs:*",
                 "xray:*"
             ],
             "Resource": ["*"]
@@ -142,6 +138,34 @@ EOF
   tags = {
     Module = "step_function"
   }
+}
+
+###############################################
+# With CloudWatch log group created externally
+###############################################
+
+resource "aws_cloudwatch_log_group" "external" {
+  name = "${random_pet.this.id}-my-log-group"
+}
+
+module "step_function_with_existing_log_group" {
+  source = "../../"
+
+  name = "${random_pet.this.id}-existing-log-group"
+
+  type = "express"
+
+  definition = local.definition_template
+
+  use_existing_cloudwatch_log_group = true
+  cloudwatch_log_group_name         = aws_cloudwatch_log_group.external.name
+
+  logging_configuration = {
+    include_execution_data = false
+    level                  = "ERROR"
+  }
+
+  depends_on = [aws_cloudwatch_log_group.external]
 }
 
 ###########
