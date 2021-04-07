@@ -39,11 +39,13 @@ Note that this example may create resources which cost money. Run `terraform des
 |------|--------|---------|
 | <a name="module_disabled_step_function"></a> [disabled\_step\_function](#module\_disabled\_step\_function) | ../../ |  |
 | <a name="module_step_function"></a> [step\_function](#module\_step\_function) | ../../ |  |
+| <a name="module_step_function_with_existing_log_group"></a> [step\_function\_with\_existing\_log\_group](#module\_step\_function\_with\_existing\_log\_group) | ../../ |  |
 
 ## Resources
 
 | Name | Type |
 |------|------|
+| [aws_cloudwatch_log_group.external](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_sqs_queue.queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [random_pet.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
 

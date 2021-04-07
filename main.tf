@@ -2,6 +2,11 @@ locals {
   create_role = var.create && var.create_role && !var.use_existing_role
   aws_region  = local.create_role && var.aws_region_assume_role == "" ? data.aws_region.current[0].name : var.aws_region_assume_role
 
+  enable_logging = try(var.logging_configuration["level"], "OFF") != "OFF"
+
+  # Normalize ARN by trimming ":*" because data-source has it, but resource does not have it
+  log_group_arn = trimsuffix(element(concat(data.aws_cloudwatch_log_group.sfn.*.arn, aws_cloudwatch_log_group.sfn.*.arn, [""]), 0), ":*")
+
   role_name = local.create_role ? coalesce(var.role_name, var.name) : null
 }
 
@@ -12,6 +17,16 @@ resource "aws_sfn_state_machine" "this" {
 
   role_arn   = var.use_existing_role ? var.role_arn : aws_iam_role.this[0].arn
   definition = var.definition
+
+  dynamic "logging_configuration" {
+    for_each = local.enable_logging ? [true] : []
+
+    content {
+      log_destination        = lookup(var.logging_configuration, "log_destination", "${local.log_group_arn}:*")
+      include_execution_data = lookup(var.logging_configuration, "include_execution_data", null)
+      level                  = lookup(var.logging_configuration, "level", null)
+    }
+  }
 
   type = upper(var.type)
 
@@ -216,4 +231,65 @@ resource "aws_iam_policy_attachment" "additional_inline" {
   name       = local.role_name
   roles      = [aws_iam_role.this[0].name]
   policy_arn = aws_iam_policy.additional_inline[0].arn
+}
+
+#################################
+# IAM policy for Cloudwatch Logs
+#################################
+
+data "aws_iam_policy_document" "logs" {
+  count = local.create_role && local.enable_logging && var.attach_cloudwatch_logs_policy ? 1 : 0
+
+  # Copied from https://docs.aws.amazon.com/step-functions/latest/dg/cw-logs.html
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "logs:CreateLogDelivery",
+      "logs:GetLogDelivery",
+      "logs:UpdateLogDelivery",
+      "logs:DeleteLogDelivery",
+      "logs:ListLogDeliveries",
+      "logs:PutResourcePolicy",
+      "logs:DescribeResourcePolicies",
+      "logs:DescribeLogGroups",
+    ]
+
+    resources = ["*"]
+  }
+}
+
+resource "aws_iam_policy" "logs" {
+  count = local.create_role && local.enable_logging && var.attach_cloudwatch_logs_policy ? 1 : 0
+
+  name   = "${local.role_name}-logs"
+  policy = data.aws_iam_policy_document.logs[0].json
+}
+
+resource "aws_iam_policy_attachment" "logs" {
+  count = local.create_role && local.enable_logging && var.attach_cloudwatch_logs_policy ? 1 : 0
+
+  name       = "${local.role_name}-logs"
+  roles      = [aws_iam_role.this[0].name]
+  policy_arn = aws_iam_policy.logs[0].arn
+}
+
+##################
+# CloudWatch Logs
+##################
+
+data "aws_cloudwatch_log_group" "sfn" {
+  count = var.create && local.enable_logging && var.use_existing_cloudwatch_log_group ? 1 : 0
+
+  name = var.cloudwatch_log_group_name
+}
+
+resource "aws_cloudwatch_log_group" "sfn" {
+  count = var.create && local.enable_logging && !var.use_existing_cloudwatch_log_group ? 1 : 0
+
+  name              = coalesce(var.cloudwatch_log_group_name, var.name)
+  retention_in_days = var.cloudwatch_log_group_retention_in_days
+  kms_key_id        = var.cloudwatch_log_group_kms_key_id
+
+  tags = merge(var.tags, var.cloudwatch_log_group_tags)
 }

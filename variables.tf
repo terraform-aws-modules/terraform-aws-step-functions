@@ -16,6 +16,12 @@ variable "use_existing_role" {
   default     = false
 }
 
+variable "use_existing_cloudwatch_log_group" {
+  description = "Whether to use an existing CloudWatch log group or create new"
+  type        = bool
+  default     = false
+}
+
 ################
 # Step Function
 ################
@@ -53,6 +59,46 @@ variable "type" {
     condition     = contains(["STANDARD", "EXPRESS"], upper(var.type))
     error_message = "Step Function type must be one of the following (STANDARD | EXPRESS)."
   }
+}
+
+#################
+# CloudWatch Logs
+#################
+
+variable "logging_configuration" {
+  description = "Defines what execution history events are logged and where they are logged"
+  type        = map(string)
+  default     = {}
+}
+
+variable "cloudwatch_log_group_name" {
+  description = "Name of Cloudwatch Logs group name to use."
+  type        = string
+  default     = null
+}
+
+variable "cloudwatch_log_group_retention_in_days" {
+  description = "Specifies the number of days you want to retain log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653."
+  type        = number
+  default     = null
+}
+
+variable "cloudwatch_log_group_kms_key_id" {
+  description = "The ARN of the KMS Key to use when encrypting log data."
+  type        = string
+  default     = null
+}
+
+variable "cloudwatch_log_group_tags" {
+  description = "A map of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
+}
+
+variable "attach_cloudwatch_logs_policy" {
+  description = "Controls whether CloudWatch Logs policy should be added to IAM role for Lambda Function"
+  type        = bool
+  default     = true
 }
 
 ###########
