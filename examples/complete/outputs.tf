@@ -1,31 +1,31 @@
 # State Machine
-output "this_state_machine_id" {
+output "state_machine_id" {
   description = "The ARN of the State Machine"
-  value       = module.step_function.this_state_machine_id
+  value       = module.step_function.state_machine_id
 }
 
-output "this_state_machine_arn" {
+output "state_machine_arn" {
   description = "The ARN of the State Machine"
-  value       = module.step_function.this_state_machine_arn
+  value       = module.step_function.state_machine_arn
 }
 
-output "this_state_machine_creation_date" {
+output "state_machine_creation_date" {
   description = "The date the State Machine was created"
-  value       = module.step_function.this_state_machine_creation_date
+  value       = module.step_function.state_machine_creation_date
 }
 
-output "this_state_machine_status" {
+output "state_machine_status" {
   description = "The current status of the State Machine"
-  value       = module.step_function.this_state_machine_status
+  value       = module.step_function.state_machine_status
 }
 
 # IAM Role
-output "this_role_arn" {
+output "role_arn" {
   description = "The ARN of the IAM role created for the State Machine"
-  value       = module.step_function.this_role_arn
+  value       = module.step_function.role_arn
 }
 
-output "this_role_name" {
+output "role_name" {
   description = "The name of the IAM role created for the State Machine"
-  value       = module.step_function.this_role_name
+  value       = module.step_function.role_name
 }
