@@ -93,10 +93,10 @@ In addition to all supported AWS service integrations you may want to create and
 There are 5 supported ways to attach additional IAM policies to IAM role used by Step Function:
 
 1. `policy_json` - JSON string or heredoc, when `attach_policy_json = true`.
-1. `policy_jsons` - List of JSON strings or heredoc, when `attach_policy_jsons = true` and `number_of_policy_jsons > 0`.
-1. `policy` - ARN of existing IAM policy, when `attach_policy = true`.
-1. `policies` - List of ARNs of existing IAM policies, when `attach_policies = true` and `number_of_policies > 0`.
-1. `policy_statements` - Map of maps to define IAM statements which will be generated as IAM policy. Requires `attach_policy_statements = true`. See `examples/complete` for more information.
+2. `policy_jsons` - List of JSON strings or heredoc, when `attach_policy_jsons = true` and `number_of_policy_jsons > 0`.
+3. `policy` - ARN of existing IAM policy, when `attach_policy = true`.
+4. `policies` - List of ARNs of existing IAM policies, when `attach_policies = true` and `number_of_policies > 0`.
+5. `policy_statements` - Map of maps to define IAM statements which will be generated as IAM policy. Requires `attach_policy_statements = true`. See `examples/complete` for more information.
 
 ## Conditional creation
 
@@ -223,4 +223,4 @@ Please reach out to [Betajob](https://www.betajob.com/) if you are looking for c
 
 ## License
 
-Apache 2 Licensed. See LICENSE for full details.
+Apache 2 Licensed. See [LICENSE](https://github.com/terraform-aws-modules/terraform-aws-step-functions/tree/master/LICENSE) for full details.
