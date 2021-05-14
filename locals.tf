@@ -696,6 +696,15 @@ locals {
       }
     }
 
+    eventbridge = {
+      eventbridge = {
+        actions = [
+          "events:PutEvents"
+        ]
+        default_resources = ["*"]
+      }
+    }
+
     # https://docs.aws.amazon.com/step-functions/latest/dg/activities-iam.html
     no_tasks = {
       deny_all = {
