@@ -696,6 +696,7 @@ locals {
       }
     }
 
+    # https://docs.aws.amazon.com/step-functions/latest/dg/eventbridge-iam.html
     eventbridge = {
       eventbridge = {
         actions = [
