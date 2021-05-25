@@ -6,9 +6,9 @@ This Terraform module is the part of [serverless.tf framework](https://github.co
 
 ## Features
 
-- [x] Creates AWS Step Function
-- [x] Conditional creation for many types of resources
-- [x] Support IAM policy attachments for [Integrated Services (eg, Lambda, SQS, ECS, EKS, Batch, DynamoDB, etc)](https://docs.aws.amazon.com/step-functions/latest/dg/service-integration-iam-templates.html) and various ways to create and attach additional policies
+- Creates AWS Step Function
+- Conditional creation for many types of resources
+- Support IAM policy attachments for [Integrated Services (eg, Lambda, SQS, ECS, EKS, Batch, DynamoDB, etc)](https://docs.aws.amazon.com/step-functions/latest/dg/service-integration-iam-templates.html) and various ways to create and attach additional policies
 
 ## Usage
 
