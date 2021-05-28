@@ -289,6 +289,12 @@ locals {
       }
     }
 
+    iam = {
+      iam_PassRole = {
+        actions = ["iam:PassRole"]
+      }
+    }
+
     # https://docs.aws.amazon.com/step-functions/latest/dg/sagemaker-iam.html
     sagemaker_CreateTrainingJob_Sync = {
       sagemaker = {

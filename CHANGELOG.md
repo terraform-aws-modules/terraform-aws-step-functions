@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 <a name="unreleased"></a>
 ## [Unreleased]
-
+- feat: Add iam_PassRole integration ([#11](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/11))
 
 
 <a name="v2.3.0"></a>
