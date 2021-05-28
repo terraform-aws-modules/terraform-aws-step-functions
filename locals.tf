@@ -210,6 +210,7 @@ locals {
           "events:PutRule",
           "events:DescribeRule"
         ]
+        default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventsForBatchJobsRule"]
       }
     }
 
@@ -256,6 +257,7 @@ locals {
           "events:PutRule",
           "events:DescribeRule"
         ]
+        default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventsForECSTaskRule"]
       }
     }
 
@@ -554,7 +556,7 @@ locals {
       }
     }
 
-    codebuild_BatchDeleteBuilds = {
+    codebuild_BatcDeleteBuilds = {
       codebuild = {
         actions = [
           "codebuild:BatchDeleteBuilds"
