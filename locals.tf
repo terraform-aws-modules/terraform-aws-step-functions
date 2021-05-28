@@ -293,8 +293,8 @@ locals {
 
     # Allow service to pass role, ie for Fargate Task Execution role
     # https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/11
-    iam_PassRole = {
-      iam = {
+    iam = {
+      iam_PassRole = {
         actions = ["iam:PassRole"]
       }
     }
