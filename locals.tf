@@ -291,6 +291,14 @@ locals {
       }
     }
 
+    # Allow service to pass role, ie for Fargate Task Execution role
+    # https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/11
+    iam = {
+      iam = {
+        actions = ["iam:PassRole"]
+      }
+    }
+
     # https://docs.aws.amazon.com/step-functions/latest/dg/sagemaker-iam.html
     sagemaker_CreateTrainingJob_Sync = {
       sagemaker = {
