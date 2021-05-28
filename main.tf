@@ -37,9 +37,6 @@ resource "aws_sfn_state_machine" "this" {
 # IAM Role
 ###########
 
-data "aws_caller_identity" "current" {}
-
-
 data "aws_region" "current" {
   count = local.create_role && var.aws_region_assume_role == "" ? 1 : 0
 }

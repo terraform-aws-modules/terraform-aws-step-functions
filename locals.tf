@@ -210,7 +210,6 @@ locals {
           "events:PutRule",
           "events:DescribeRule"
         ]
-        default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventsForBatchJobsRule"]
       }
     }
 
@@ -257,7 +256,6 @@ locals {
           "events:PutRule",
           "events:DescribeRule"
         ]
-        default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventsForECSTaskRule"]
       }
     }
 
@@ -291,8 +289,6 @@ locals {
       }
     }
 
-    # Allow service to pass role, ie for Fargate Task Execution role
-    # https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/11
     iam = {
       iam_PassRole = {
         actions = ["iam:PassRole"]
