@@ -564,7 +564,7 @@ locals {
       }
     }
 
-    codebuild_BatcDeleteBuilds = {
+    codebuild_BatchDeleteBuilds = {
       codebuild = {
         actions = [
           "codebuild:BatchDeleteBuilds"
