@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v2.4.0"></a>
+## [v2.4.0] - 2021-09-01
+
+- feat: Enable X-Ray tracing on Step Function if set to true in service_integrations ([#22](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/22))
+
+
 <a name="v2.3.0"></a>
 ## [v2.3.0] - 2021-05-25
 
@@ -66,7 +72,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.4.0...HEAD
+[v2.4.0]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.3.0...v2.4.0
 [v2.3.0]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.2.0...v2.3.0
 [v2.2.0]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.1.0...v2.2.0
 [v2.1.0]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.0.0...v2.1.0
