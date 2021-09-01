@@ -4,6 +4,8 @@ locals {
 
   enable_logging = try(var.logging_configuration["level"], "OFF") != "OFF"
 
+  enable_xray_tracing = try(var.service_integrations["xray"]["xray"], false) == true
+
   # Normalize ARN by trimming ":*" because data-source has it, but resource does not have it
   log_group_arn = trimsuffix(element(concat(data.aws_cloudwatch_log_group.sfn.*.arn, aws_cloudwatch_log_group.sfn.*.arn, [""]), 0), ":*")
 
@@ -25,6 +27,13 @@ resource "aws_sfn_state_machine" "this" {
       log_destination        = lookup(var.logging_configuration, "log_destination", "${local.log_group_arn}:*")
       include_execution_data = lookup(var.logging_configuration, "include_execution_data", null)
       level                  = lookup(var.logging_configuration, "level", null)
+    }
+  }
+
+  dynamic "tracing_configuration" {
+    for_each = local.enable_xray_tracing ? [true] : []
+    content {
+      enabled = true
     }
   }
 
