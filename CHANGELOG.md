@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- feat: adding PassRole for ECS tasks as it is required for Fargate ([#24](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/24))
+
+
+<a name="v2.5.0"></a>
+## [v2.5.0] - 2021-09-15
+
+- feat: Adding IAM PassRole for ECS tasks as it is required for Fargate ([#24](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/24))
 
 
 <a name="v2.4.0"></a>
@@ -73,7 +78,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.4.0...HEAD
+[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.5.0...HEAD
+[v2.5.0]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.4.0...v2.5.0
 [v2.4.0]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.3.0...v2.4.0
 [v2.3.0]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.2.0...v2.3.0
 [v2.2.0]: https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.1.0...v2.2.0
