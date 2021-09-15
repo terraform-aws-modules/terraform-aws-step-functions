@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- feat: adding PassRole for ECS tasks as it is required for Fargate ([#24](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/24))
 
 
 <a name="v2.4.0"></a>
