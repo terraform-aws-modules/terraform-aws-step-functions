@@ -250,6 +250,19 @@ locals {
         default_resources = ["*"]
       }
 
+      iam_PassRole = {
+        actions = [
+          "iam:PassRole"
+        ]
+        condition = [
+          {
+            test     = "StringEquals"
+            variable = "iam:PassedToService"
+            values   = ["ecs-tasks.amazonaws.com"]
+          }
+        ]
+      }
+
       events = {
         actions = [
           "events:PutTargets",
@@ -263,6 +276,19 @@ locals {
       ecs = {
         actions = [
           "ecs:RunTask"
+        ]
+      }
+
+      iam_PassRole = {
+        actions = [
+          "iam:PassRole"
+        ]
+        condition = [
+          {
+            test     = "StringEquals"
+            variable = "iam:PassedToService"
+            values   = ["ecs-tasks.amazonaws.com"]
+          }
         ]
       }
     }
