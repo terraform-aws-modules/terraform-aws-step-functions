@@ -82,7 +82,10 @@ resource "aws_iam_role" "this" {
 ##############################
 
 data "aws_iam_policy_document" "service" {
-  for_each = local.create_role && var.attach_policies_for_integrations ? try(tomap(var.service_integrations), var.service_integrations) : tomap({})
+  for_each = {
+    for key, value in var.service_integrations : key => value
+    if local.create_role && var.attach_policies_for_integrations && value != null
+  }
 
   dynamic "statement" {
     for_each = each.value
@@ -106,14 +109,20 @@ data "aws_iam_policy_document" "service" {
 }
 
 resource "aws_iam_policy" "service" {
-  for_each = local.create_role && var.attach_policies_for_integrations ? try(tomap(var.service_integrations), var.service_integrations) : tomap({})
+  for_each = {
+    for key, value in var.service_integrations : key => value
+    if local.create_role && var.attach_policies_for_integrations && value != null
+  }
 
   name   = "${local.role_name}-${each.key}"
   policy = data.aws_iam_policy_document.service[each.key].json
 }
 
 resource "aws_iam_policy_attachment" "service" {
-  for_each = local.create_role && var.attach_policies_for_integrations ? try(tomap(var.service_integrations), var.service_integrations) : tomap({})
+  for_each = {
+    for key, value in var.service_integrations : key => value
+    if local.create_role && var.attach_policies_for_integrations && value != null
+  }
 
   name       = "${local.role_name}-${each.key}"
   roles      = [aws_iam_role.this[0].name]
