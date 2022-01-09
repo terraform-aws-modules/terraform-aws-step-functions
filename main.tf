@@ -112,7 +112,7 @@ resource "aws_iam_policy" "service" {
   policy = data.aws_iam_policy_document.service[each.key].json
 }
 
-resource "aws_iam_policy_attachment" "service" {
+resource "aws_iam_role_policy_attachment" "service" {
   for_each = local.create_role && var.attach_policies_for_integrations ? try(tomap(var.service_integrations), var.service_integrations) : tomap({})
 
   name       = "${local.role_name}-${each.key}"
@@ -132,7 +132,7 @@ resource "aws_iam_policy" "additional_json" {
   policy = var.policy_json
 }
 
-resource "aws_iam_policy_attachment" "additional_json" {
+resource "aws_iam_role_policy_attachment" "additional_json" {
   count = local.create_role && var.attach_policy_json ? 1 : 0
 
   name       = local.role_name
@@ -151,7 +151,7 @@ resource "aws_iam_policy" "additional_jsons" {
   policy = var.policy_jsons[count.index]
 }
 
-resource "aws_iam_policy_attachment" "additional_jsons" {
+resource "aws_iam_role_policy_attachment" "additional_jsons" {
   count = local.create_role && var.attach_policy_jsons ? var.number_of_policy_jsons : 0
 
   name       = "${local.role_name}-${count.index}"
@@ -234,7 +234,7 @@ resource "aws_iam_policy" "additional_inline" {
   policy = data.aws_iam_policy_document.additional_inline[0].json
 }
 
-resource "aws_iam_policy_attachment" "additional_inline" {
+resource "aws_iam_role_policy_attachment" "additional_inline" {
   count = local.create_role && var.attach_policy_statements ? 1 : 0
 
   name       = local.role_name
@@ -275,7 +275,7 @@ resource "aws_iam_policy" "logs" {
   policy = data.aws_iam_policy_document.logs[0].json
 }
 
-resource "aws_iam_policy_attachment" "logs" {
+resource "aws_iam_role_policy_attachment" "logs" {
   count = local.create_role && local.enable_logging && var.attach_cloudwatch_logs_policy ? 1 : 0
 
   name       = "${local.role_name}-logs"
