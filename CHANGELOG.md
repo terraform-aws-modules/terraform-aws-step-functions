@@ -1,3 +1,14 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+### [2.5.1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.5.0...v2.5.1) (2022-01-10)
+
+
+### Bug Fixes
+
+* update CI/CD process to enable auto-release workflow ([#26](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/26)) ([660d759](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/660d759b68d2ae9817fd1bc138885cddc58dfd2e))
+
 <a name="v2.5.0"></a>
 ## [v2.5.0] - 2021-09-15
 
