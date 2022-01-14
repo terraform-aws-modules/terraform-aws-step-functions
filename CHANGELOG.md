@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.5.2](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.5.1...v2.5.2) (2022-01-14)
+
+
+### Bug Fixes
+
+* True/false results had different types ([#30](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/30)) ([9f8c111](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/9f8c111b8c8daa8e0525525ca0110b3a8c43e577))
+
 ### [2.5.1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.5.0...v2.5.1) (2022-01-10)
 
 
