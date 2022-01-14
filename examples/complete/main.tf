@@ -58,7 +58,8 @@ module "step_function" {
     }
 
     lambda = {
-      lambda = ["arn:aws:lambda:eu-west-1:123456789012:function:test1", "arn:aws:lambda:eu-west-1:123456789012:function:test2"]
+      lambda = [
+      module.lambda_function.lambda_function_arn, "arn:aws:lambda:eu-west-1:123456789012:function:test2"]
     }
 
     xray = {
@@ -166,6 +167,40 @@ module "step_function_with_existing_log_group" {
   }
 
   depends_on = [aws_cloudwatch_log_group.external]
+}
+
+#############################################
+# Using packaged function from Lambda module
+#############################################
+
+locals {
+  package_url = "https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-lambda/master/examples/fixtures/python3.8-zip/existing_package.zip"
+  downloaded  = "downloaded_package_${md5(local.package_url)}.zip"
+}
+
+resource "null_resource" "download_package" {
+  triggers = {
+    downloaded = local.downloaded
+  }
+
+  provisioner "local-exec" {
+    command = "curl -L -o ${local.downloaded} ${local.package_url}"
+  }
+}
+
+module "lambda_function" {
+  source  = "terraform-aws-modules/lambda/aws"
+  version = "~> 2.0"
+
+  function_name = "${random_pet.this.id}-lambda"
+  description   = "My awesome lambda function"
+  handler       = "index.lambda_handler"
+  runtime       = "python3.8"
+
+  publish = true
+
+  create_package         = false
+  local_existing_package = local.downloaded
 }
 
 ###########
