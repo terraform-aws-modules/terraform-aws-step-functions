@@ -75,7 +75,7 @@ module "step_function" {
     }
 
     sqs = {
-      sqs = "arn:aws:sqs:..."  # sqs queue ARN is required because there is no default_resources key for such integration
+      sqs = ["arn:aws:sqs:..."]  # sqs queue ARN(s) is required because there is no default_resources key for such integration
     }
 
     # Special case to deny all actions for the step function (this will override all IAM policies allowed for the function)
