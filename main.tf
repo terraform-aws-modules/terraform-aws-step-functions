@@ -110,6 +110,7 @@ resource "aws_iam_policy" "service" {
 
   name   = "${local.role_name}-${each.key}"
   policy = data.aws_iam_policy_document.service[each.key].json
+  tags = var.tags
 }
 
 resource "aws_iam_policy_attachment" "service" {
@@ -130,6 +131,7 @@ resource "aws_iam_policy" "additional_json" {
 
   name   = local.role_name
   policy = var.policy_json
+  tags = var.tags
 }
 
 resource "aws_iam_policy_attachment" "additional_json" {
@@ -149,6 +151,7 @@ resource "aws_iam_policy" "additional_jsons" {
 
   name   = "${local.role_name}-${count.index}"
   policy = var.policy_jsons[count.index]
+  tags = var.tags
 }
 
 resource "aws_iam_policy_attachment" "additional_jsons" {
@@ -232,6 +235,7 @@ resource "aws_iam_policy" "additional_inline" {
 
   name   = "${local.role_name}-inline"
   policy = data.aws_iam_policy_document.additional_inline[0].json
+  tags = var.tags
 }
 
 resource "aws_iam_policy_attachment" "additional_inline" {
@@ -273,6 +277,7 @@ resource "aws_iam_policy" "logs" {
 
   name   = "${local.role_name}-logs"
   policy = data.aws_iam_policy_document.logs[0].json
+  tags = var.tags
 }
 
 resource "aws_iam_policy_attachment" "logs" {
