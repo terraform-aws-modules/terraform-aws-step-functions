@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+### Enabled Tagging For Iam-policy 
+
+<a name="v2.6.0"></a>
+## [v2.6.0] - 2022-04-10
+
+- feat: Enabled taging for iam policy resource ([#32](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/32)
+
+
 ### [2.5.2](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.5.1...v2.5.2) (2022-01-14)
 
 
@@ -15,6 +23,7 @@ All notable changes to this project will be documented in this file.
 ### Bug Fixes
 
 * update CI/CD process to enable auto-release workflow ([#26](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/26)) ([660d759](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/660d759b68d2ae9817fd1bc138885cddc58dfd2e))
+
 
 <a name="v2.5.0"></a>
 ## [v2.5.0] - 2021-09-15
