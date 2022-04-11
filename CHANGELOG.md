@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ### Enabled Tagging For Iam-policy 
 
-<a name="v2.6.0"></a>
+<a name="v2.5.3"></a>
 ## [v2.6.0] - 2022-04-10
 
 - feat: Enabled taging for iam policy resource ([#32](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/32)
