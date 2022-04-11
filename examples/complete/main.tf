@@ -66,6 +66,17 @@ module "step_function" {
       xray = true
     }
 
+    stepfunction_Sync = {
+      stepfunction = ["arn:aws:states:eu-west-1:123456789012:stateMachine:test1"]
+      stepfunction_Wildcard = ["arn:aws:states:eu-west-1:123456789012:stateMachine:test1"]
+
+      # Set to true to use the default events (otherwise, set this to a list of ARNs; see the docs linked in locals.tf
+      # for more information). Without events permissions, you will get an error similar to this:
+      #   Error: AccessDeniedException: 'arn:aws:iam::xxxx:role/step-functions-role' is not authorized to
+      #   create managed-rule
+      events = true
+    }
+
     #    # NB: This will "Deny" everything (including logging)!
     #    no_tasks = {
     #      deny_all = true
