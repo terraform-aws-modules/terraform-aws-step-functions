@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.7.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.6.0...v2.7.0) (2022-04-13)
+
+
+### Features
+
+* Enabled tags for IAM policies ([#38](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/38)) ([f9d3a89](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/f9d3a894fb30cbcc298903cdf9d277e4835da9d8))
 
 ## [2.6.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.5.2...v2.6.0) (2022-04-11)
 
