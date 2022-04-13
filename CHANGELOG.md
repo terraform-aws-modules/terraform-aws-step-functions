@@ -2,12 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+
 ## [2.6.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.5.2...v2.6.0) (2022-04-11)
 
 
 ### Features
 
 * Added default resources for events permissions ([#34](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/34)) ([698e4c1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/698e4c1a4640ee80d810bd8f7e6e4db3acfd2b47))
+
 
 ### [2.5.2](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.5.1...v2.5.2) (2022-01-14)
 
@@ -22,6 +24,7 @@ All notable changes to this project will be documented in this file.
 ### Bug Fixes
 
 * update CI/CD process to enable auto-release workflow ([#26](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/26)) ([660d759](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/660d759b68d2ae9817fd1bc138885cddc58dfd2e))
+
 
 <a name="v2.5.0"></a>
 ## [v2.5.0] - 2021-09-15
