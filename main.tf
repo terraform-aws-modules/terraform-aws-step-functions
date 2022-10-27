@@ -7,7 +7,7 @@ locals {
   enable_xray_tracing = try(var.service_integrations["xray"]["xray"], false) == true
 
   # Normalize ARN by trimming ":*" because data-source has it, but resource does not have it
-  log_group_arn = trimsuffix(element(concat(data.aws_cloudwatch_log_group.sfn.*.arn, aws_cloudwatch_log_group.sfn.*.arn, [""]), 0), ":*")
+  log_group_arn = trimsuffix(try(data.aws_cloudwatch_log_group.sfn[0].arn, aws_cloudwatch_log_group.sfn[0].arn, ""), ":*")
 
   role_name = local.create_role ? coalesce(var.role_name, var.name) : null
 }
