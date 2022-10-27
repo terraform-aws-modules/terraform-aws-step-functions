@@ -67,7 +67,7 @@ module "step_function" {
     }
 
     stepfunction_Sync = {
-      stepfunction = ["arn:aws:states:eu-west-1:123456789012:stateMachine:test1"]
+      stepfunction          = ["arn:aws:states:eu-west-1:123456789012:stateMachine:test1"]
       stepfunction_Wildcard = ["arn:aws:states:eu-west-1:123456789012:stateMachine:test1"]
 
       # Set to true to use the default events (otherwise, set this to a list of ARNs; see the docs linked in locals.tf
