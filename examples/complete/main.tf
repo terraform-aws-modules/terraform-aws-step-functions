@@ -46,6 +46,10 @@ module "step_function" {
 
   service_integrations = {
 
+    batch_Sync = {
+      events = true
+    }
+
     dynamodb = {
       dynamodb = ["arn:aws:dynamodb:eu-west-1:052212379155:table/Test"]
     }
