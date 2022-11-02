@@ -210,8 +210,8 @@ locals {
           "events:PutRule",
           "events:DescribeRule"
         ]
+        default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventsForBatchJobsRule"]
       }
-      default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventsForBatchJobsRule"]
     }
 
     batch_WaitForTaskToken = {
