@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.7.2](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.7.1...v2.7.2) (2022-11-02)
+
+
+### Bug Fixes
+
+* Move default resources for events for AWS Batch service integration ([#44](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/44)) ([bb2186b](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/bb2186b4215461dad5675790c3125b0116030a81))
+
 ### [2.7.1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.7.0...v2.7.1) (2022-10-27)
 
 
