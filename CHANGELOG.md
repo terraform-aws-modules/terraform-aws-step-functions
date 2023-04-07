@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.7.3...v2.8.0) (2023-04-07)
+
+
+### Features
+
+* Add output for the CloudWatch log group name and ARN created for the Step Function ([#45](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/45)) ([62afe34](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/62afe3466501da24b6c94c92756334da69f16e3f))
+
 ### [2.7.3](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.7.2...v2.7.3) (2023-01-24)
 
 
