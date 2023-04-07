@@ -29,3 +29,14 @@ output "role_name" {
   description = "The name of the IAM role created for the State Machine"
   value       = module.step_function.role_name
 }
+
+# CloudWatch
+output "cloudwatch_log_group_arn" {
+  description = "The ARN of the CloudWatch log group created for the Step Function"
+  value       = module.step_function.cloudwatch_log_group_arn
+}
+
+output "cloudwatch_log_group_name" {
+  description = "The name of the CloudWatch log group created for the Step Function"
+  value       = module.step_function.cloudwatch_log_group_name
+}

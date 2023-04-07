@@ -29,3 +29,14 @@ output "role_name" {
   description = "The name of the IAM role created for the Step Function"
   value       = try(aws_iam_role.this[0].name, "")
 }
+
+# CloudWatch
+output "cloudwatch_log_group_arn" {
+  description = "The ARN of the CloudWatch log group created for the Step Function"
+  value       = try(aws_cloudwatch_log_group.sfn[0].arn, "")
+}
+
+output "cloudwatch_log_group_name" {
+  description = "The name of the CloudWatch log group created for the Step Function"
+  value       = try(aws_cloudwatch_log_group.sfn[0].name, "")
+}
