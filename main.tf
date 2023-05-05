@@ -301,7 +301,7 @@ data "aws_cloudwatch_log_group" "sfn" {
 resource "aws_cloudwatch_log_group" "sfn" {
   count = var.create && local.enable_logging && !var.use_existing_cloudwatch_log_group ? 1 : 0
 
-  name              = coalesce(var.cloudwatch_log_group_name, var.name)
+  name              = coalesce(var.cloudwatch_log_group_name, "/aws/vendedlogs/states/${var.name}")
   retention_in_days = var.cloudwatch_log_group_retention_in_days
   kms_key_id        = var.cloudwatch_log_group_kms_key_id
 
