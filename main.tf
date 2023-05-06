@@ -39,6 +39,12 @@ resource "aws_sfn_state_machine" "this" {
 
   type = upper(var.type)
 
+  timeouts {
+    create = lookup(var.sfn_state_machine_timeouts, "create", null)
+    delete = lookup(var.sfn_state_machine_timeouts, "delete", null)
+    update = lookup(var.sfn_state_machine_timeouts, "update", null)
+  }
+
   tags = merge({ Name = var.name }, var.tags)
 }
 

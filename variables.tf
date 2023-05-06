@@ -61,6 +61,12 @@ variable "type" {
   }
 }
 
+variable "sfn_state_machine_timeouts" {
+  description = "Create, update, and delete timeout configurations for the step function."
+  type        = map(string)
+  default     = {}
+}
+
 #################
 # CloudWatch Logs
 #################
