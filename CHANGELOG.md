@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.8.0...v3.0.0) (2023-05-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgraded Terraform version to 1.0+ and added configurable timeouts (#53)
+
+### Features
+
+* Upgraded Terraform version to 1.0+ and added configurable timeouts ([#53](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/53)) ([75eaaa7](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/75eaaa7580a703a96fb04c264f8b04dcc283540d))
+
 ## [2.8.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.7.3...v2.8.0) (2023-04-07)
 
 
