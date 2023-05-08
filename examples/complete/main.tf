@@ -151,6 +151,12 @@ EOF
   # END: Additional policies
   ###########################
 
+  sfn_state_machine_timeouts = {
+    create = "30m"
+    delete = "50m"
+    update = "30m"
+  }
+
   tags = {
     Module = "step_function"
   }
