@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.1.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v3.0.0...v3.1.0) (2023-05-17)
+
+
+### Features
+
+* Prefix the CloudWatch Log group name with  `/aws/vendedlogs/states/` ([#52](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/52)) ([3964cb3](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/3964cb385d7dd10f6e079a1df7708c260892990f))
+
 ## [3.0.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v2.8.0...v3.0.0) (2023-05-08)
 
 
