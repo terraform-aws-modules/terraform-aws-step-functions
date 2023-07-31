@@ -353,8 +353,8 @@ locals {
           "events:PutRule",
           "events:DescribeRule"
         ]
+        default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventsForSageMakerTrainingJobsRule"]
       }
-      default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventsForSageMakerTrainingJobsRule"]
     }
 
     sagemaker_CreateTrainingJob_WaitForTaskToken = {
@@ -546,8 +546,8 @@ locals {
           "events:PutRule",
           "events:DescribeRule"
         ]
+        default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventForEMRTerminateJobFlowsRule"]
       }
-      default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventForEMRTerminateJobFlowsRule"]
     }
 
     # https://docs.aws.amazon.com/step-functions/latest/dg/codebuild-iam.html
@@ -566,8 +566,8 @@ locals {
           "events:PutRule",
           "events:DescribeRule"
         ]
+        default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventForCodeBuildStartBuildRule"]
       }
-      default_resources = ["arn:aws:events:${local.aws_region}:${data.aws_caller_identity.current.account_id}:rule/StepFunctionsGetEventForCodeBuildStartBuildRule"]
     }
 
     codebuild_StartBuild = {
