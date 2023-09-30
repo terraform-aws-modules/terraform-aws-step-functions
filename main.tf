@@ -19,6 +19,7 @@ resource "aws_sfn_state_machine" "this" {
 
   role_arn   = var.use_existing_role ? var.role_arn : aws_iam_role.this[0].arn
   definition = var.definition
+  publish    = var.publish
 
   dynamic "logging_configuration" {
     for_each = local.enable_logging ? [true] : []

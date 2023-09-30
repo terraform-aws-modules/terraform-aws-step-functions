@@ -19,6 +19,11 @@ output "state_machine_status" {
   value       = module.step_function.state_machine_status
 }
 
+output "state_machine_version_arn" {
+  description = "The ARN of state machine version"
+  value       = module.step_function.state_machine_version_arn
+}
+
 # IAM Role
 output "role_arn" {
   description = "The ARN of the IAM role created for the State Machine"
