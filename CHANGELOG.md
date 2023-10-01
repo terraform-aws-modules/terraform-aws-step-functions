@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v3.1.0...v4.0.0) (2023-10-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added publish functionality and bump AWS provider version to v5 (#57)
+
+### Features
+
+* Added publish functionality and bump AWS provider version to v5 ([#57](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/57)) ([28a77d2](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/28a77d261ef46f5a5ff133c6ab68d851312c0666))
+
 ## [3.1.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v3.0.0...v3.1.0) (2023-05-17)
 
 
