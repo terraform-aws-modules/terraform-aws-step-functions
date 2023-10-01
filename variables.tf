@@ -67,6 +67,12 @@ variable "sfn_state_machine_timeouts" {
   default     = {}
 }
 
+variable "publish" {
+  description = "Determines whether to set a version of the state machine when it is created."
+  type        = bool
+  default     = false
+}
+
 #################
 # CloudWatch Logs
 #################

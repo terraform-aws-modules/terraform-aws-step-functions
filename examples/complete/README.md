@@ -23,7 +23,7 @@ Note that this example may create resources which cost money. Run `terraform des
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.66 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.6 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | >= 2 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 2 |
 
@@ -31,7 +31,7 @@ Note that this example may create resources which cost money. Run `terraform des
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.66 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.6 |
 | <a name="provider_null"></a> [null](#provider\_null) | >= 2 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 2 |
 
@@ -69,4 +69,5 @@ No inputs.
 | <a name="output_state_machine_creation_date"></a> [state\_machine\_creation\_date](#output\_state\_machine\_creation\_date) | The date the State Machine was created |
 | <a name="output_state_machine_id"></a> [state\_machine\_id](#output\_state\_machine\_id) | The ARN of the State Machine |
 | <a name="output_state_machine_status"></a> [state\_machine\_status](#output\_state\_machine\_status) | The current status of the State Machine |
+| <a name="output_state_machine_version_arn"></a> [state\_machine\_version\_arn](#output\_state\_machine\_version\_arn) | The ARN of state machine version |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
