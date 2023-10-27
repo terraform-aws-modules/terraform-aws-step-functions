@@ -702,7 +702,7 @@ locals {
     stepfunction_Sync = {
       stepfunction = {
         actions = [
-          "states:StartExecution"
+          "states:StartSyncExecution"
         ]
       }
 
