@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.0.1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v4.0.0...v4.0.1) (2023-10-27)
+
+
+### Bug Fixes
+
+* Fixed stepfunction_Sync action ([#58](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/58)) ([b85c8f1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/b85c8f1c963034ba46c8263a15487f9acb4c8041))
+
 ## [4.0.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v3.1.0...v4.0.0) (2023-10-01)
 
 
