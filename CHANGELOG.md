@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v4.0.1...v4.1.0) (2023-12-04)
+
+
+### Features
+
+* Add optional policy_path variable used for policy definitions ([#60](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/60)) ([cddcf93](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/cddcf9386e33dadbd32be23cdb279ed5acf019e5))
+
 ### [4.0.1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v4.0.0...v4.0.1) (2023-10-27)
 
 
