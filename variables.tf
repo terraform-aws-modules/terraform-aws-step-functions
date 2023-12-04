@@ -249,7 +249,7 @@ variable "policy" {
 variable "policy_path" {
   description = "Path of IAM policies to use for Step Function"
   type        = string
-  default     = "/"
+  default     = null
 }
 
 variable "policies" {
