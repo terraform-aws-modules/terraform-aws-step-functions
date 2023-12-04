@@ -246,6 +246,12 @@ variable "policy" {
   default     = null
 }
 
+variable "policy_path" {
+  description = "Path of IAM policies to use for Step Function"
+  type        = string
+  default     = null
+}
+
 variable "policies" {
   description = "List of policy statements ARN to attach to IAM role"
   type        = list(string)
