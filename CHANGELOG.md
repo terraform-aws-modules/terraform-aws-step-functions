@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v4.1.1...v4.2.0) (2024-03-22)
+
+
+### Features
+
+* Add new output with state machine name ([#63](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/63)) ([f421ef6](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/f421ef6c6807c3bf3cd9ea90d895fb25844dd4ba))
+
 ## [4.1.1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v4.1.0...v4.1.1) (2024-03-06)
 
 
