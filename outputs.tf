@@ -11,7 +11,7 @@ output "state_machine_arn" {
 
 output "state_machine_name" {
   description = "The Name of the Step Function"
-  value       = try(var.name, "")
+  value       = try(aws_sfn_state_machine.this[0].name, "")
 }
 
 output "state_machine_creation_date" {
