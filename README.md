@@ -134,13 +134,13 @@ module "step_function" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.6 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.61 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.6 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.61 |
 
 ## Modules
 
@@ -192,6 +192,7 @@ No modules.
 | <a name="input_create"></a> [create](#input\_create) | Whether to create Step Function resource | `bool` | `true` | no |
 | <a name="input_create_role"></a> [create\_role](#input\_create\_role) | Whether to create IAM role for the Step Function | `bool` | `true` | no |
 | <a name="input_definition"></a> [definition](#input\_definition) | The Amazon States Language definition of the Step Function | `string` | `""` | no |
+| <a name="input_encryption_configuration"></a> [encryption\_configuration](#input\_encryption\_configuration) | Defines what encryption configuration is used to encrypt data in the State Machine. | `any` | `{}` | no |
 | <a name="input_logging_configuration"></a> [logging\_configuration](#input\_logging\_configuration) | Defines what execution history events are logged and where they are logged | `map(string)` | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of the Step Function | `string` | `""` | no |
 | <a name="input_number_of_policies"></a> [number\_of\_policies](#input\_number\_of\_policies) | Number of policies to attach to IAM role | `number` | `0` | no |

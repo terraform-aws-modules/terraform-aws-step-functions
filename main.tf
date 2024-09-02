@@ -21,6 +21,16 @@ resource "aws_sfn_state_machine" "this" {
   definition = var.definition
   publish    = var.publish
 
+  dynamic "encryption_configuration" {
+    for_each = length(var.encryption_configuration) > 0 ? [var.encryption_configuration] : []
+
+    content {
+      type                              = encryption_configuration.value.type
+      kms_key_id                        = try(encryption_configuration.value.kms_key_id, null)
+      kms_data_key_reuse_period_seconds = try(encryption_configuration.value.kms_data_key_reuse_period_seconds, null)
+    }
+  }
+
   dynamic "logging_configuration" {
     for_each = local.enable_logging ? [true] : []
 
