@@ -73,6 +73,12 @@ variable "publish" {
   default     = false
 }
 
+variable "encryption_configuration" {
+  description = "Defines what encryption configuration is used to encrypt data in the State Machine."
+  type        = any
+  default     = {}
+}
+
 #################
 # CloudWatch Logs
 #################

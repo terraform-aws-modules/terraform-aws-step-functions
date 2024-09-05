@@ -5,10 +5,14 @@ provider "aws" {
   skip_metadata_api_check     = true
   skip_region_validation      = true
   skip_credentials_validation = true
-  skip_requesting_account_id  = true
 }
 
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
+
 locals {
+  name = "ex-${basename(path.cwd)}"
+
   definition_template = <<EOF
 {
   "Comment": "A Hello World example of the Amazon States Language using Pass states",
@@ -27,6 +31,12 @@ locals {
   }
 }
 EOF
+
+  tags = {
+    Example    = local.name
+    GithubRepo = "terraform-aws-step-functions"
+    GithubOrg  = "terraform-aws-modules"
+  }
 }
 
 module "step_function" {
@@ -38,6 +48,12 @@ module "step_function" {
 
   definition = local.definition_template
   publish    = true
+
+  encryption_configuration = {
+    type                              = "CUSTOMER_MANAGED_KMS_KEY"
+    kms_key_id                        = module.kms.key_arn
+    kms_data_key_reuse_period_seconds = 600
+  }
 
   logging_configuration = {
     include_execution_data = true
@@ -145,6 +161,16 @@ EOF
       actions   = ["s3:HeadObject", "s3:GetObject"],
       resources = ["arn:aws:s3:::my-bucket/*"]
     }
+    kms = {
+      effect    = "Allow"
+      actions   = ["kms:Decrypt", "kms:GenerateDataKey"]
+      resources = [module.kms.key_arn]
+      condition = [{
+        test     = "StringEquals"
+        variable = "kms:EncryptionContext:aws:states:stateMachineArn"
+        values   = ["arn:aws:states:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:stateMachine:${random_pet.this.id}"]
+      }]
+    }
   }
 
   ###########################
@@ -157,9 +183,9 @@ EOF
     update = "30m"
   }
 
-  tags = {
+  tags = merge(local.tags, {
     Module = "step_function"
-  }
+  })
 }
 
 ###############################################
@@ -168,6 +194,8 @@ EOF
 
 resource "aws_cloudwatch_log_group" "external" {
   name = "${random_pet.this.id}-my-log-group"
+
+  tags = local.tags
 }
 
 module "step_function_with_existing_log_group" {
@@ -186,6 +214,8 @@ module "step_function_with_existing_log_group" {
     include_execution_data = false
     level                  = "ERROR"
   }
+
+  tags = local.tags
 
   depends_on = [aws_cloudwatch_log_group.external]
 }
@@ -222,6 +252,8 @@ module "lambda_function" {
 
   create_package         = false
   local_existing_package = local.downloaded
+
+  tags = local.tags
 }
 
 ###########
@@ -244,4 +276,20 @@ resource "random_pet" "this" {
 
 resource "aws_sqs_queue" "queue" {
   name = random_pet.this.id
+
+  tags = local.tags
+}
+
+module "kms" {
+  source      = "terraform-aws-modules/kms/aws"
+  version     = "~> 1.0"
+  description = "KMS key for step functions"
+
+  # Aliases
+  aliases                 = [local.name]
+  aliases_use_name_prefix = true
+
+  key_owners = [data.aws_caller_identity.current.arn]
+
+  tags = local.tags
 }

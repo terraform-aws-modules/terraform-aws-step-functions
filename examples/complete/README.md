@@ -23,7 +23,7 @@ Note that this example may create resources which cost money. Run `terraform des
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.6 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.61 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | >= 2 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 2 |
 
@@ -31,7 +31,7 @@ Note that this example may create resources which cost money. Run `terraform des
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.6 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.61 |
 | <a name="provider_null"></a> [null](#provider\_null) | >= 2 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 2 |
 
@@ -40,6 +40,7 @@ Note that this example may create resources which cost money. Run `terraform des
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_disabled_step_function"></a> [disabled\_step\_function](#module\_disabled\_step\_function) | ../../ | n/a |
+| <a name="module_kms"></a> [kms](#module\_kms) | terraform-aws-modules/kms/aws | ~> 1.0 |
 | <a name="module_lambda_function"></a> [lambda\_function](#module\_lambda\_function) | terraform-aws-modules/lambda/aws | ~> 2.0 |
 | <a name="module_step_function"></a> [step\_function](#module\_step\_function) | ../../ | n/a |
 | <a name="module_step_function_with_existing_log_group"></a> [step\_function\_with\_existing\_log\_group](#module\_step\_function\_with\_existing\_log\_group) | ../../ | n/a |
@@ -52,6 +53,8 @@ Note that this example may create resources which cost money. Run `terraform des
 | [aws_sqs_queue.queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [null_resource.download_package](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [random_pet.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
 
