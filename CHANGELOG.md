@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v4.2.0...v4.2.1) (2025-01-21)
+
+
+### Bug Fixes
+
+* Update CI workflow versions to latest ([#67](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/67)) ([4ff7e77](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/4ff7e77921601c32e1b91a4e2ac86168b72911e1))
+
 ## [4.2.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v4.1.1...v4.2.0) (2024-03-22)
 
 
