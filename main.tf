@@ -15,6 +15,8 @@ locals {
 resource "aws_sfn_state_machine" "this" {
   count = var.create ? 1 : 0
 
+  region = var.region
+
   name = var.name
 
   role_arn   = var.use_existing_role ? var.role_arn : aws_iam_role.this[0].arn
@@ -322,6 +324,8 @@ data "aws_cloudwatch_log_group" "sfn" {
 
 resource "aws_cloudwatch_log_group" "sfn" {
   count = var.create && local.enable_logging && !var.use_existing_cloudwatch_log_group ? 1 : 0
+
+  region = var.region
 
   name              = coalesce(var.cloudwatch_log_group_name, "/aws/vendedlogs/states/${var.name}")
   retention_in_days = var.cloudwatch_log_group_retention_in_days

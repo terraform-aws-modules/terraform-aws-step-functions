@@ -26,6 +26,11 @@ variable "use_existing_cloudwatch_log_group" {
 # Step Function
 ################
 
+variable "region" {
+  description = "Region where the resource(s) will be managed. Defaults to the region set in the provider configuration"
+  type        = string
+  default     = null
+}
 variable "name" {
   description = "The name of the Step Function"
   type        = string
