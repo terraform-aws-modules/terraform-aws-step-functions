@@ -1,6 +1,6 @@
 locals {
   create_role = var.create && var.create_role && !var.use_existing_role
-  aws_region  = local.create_role && var.aws_region_assume_role == "" ? data.aws_region.current[0].name : var.aws_region_assume_role
+  aws_region  = local.create_role && var.aws_region_assume_role == "" ? data.aws_region.current[0].region : var.aws_region_assume_role
 
   enable_logging = try(var.logging_configuration["level"], "OFF") != "OFF"
 
