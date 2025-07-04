@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.1](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v5.0.0...v5.0.1) (2025-07-04)
+
+
+### Bug Fixes
+
+* Fix deprecation warning with terraform provider v6 ([#72](https://github.com/terraform-aws-modules/terraform-aws-step-functions/issues/72)) ([4fe5305](https://github.com/terraform-aws-modules/terraform-aws-step-functions/commit/4fe530558e1f4ab22e77c8f4a38e6a9f1526a6c7))
+
 ## [5.0.0](https://github.com/terraform-aws-modules/terraform-aws-step-functions/compare/v4.2.1...v5.0.0) (2025-06-26)
 
 
