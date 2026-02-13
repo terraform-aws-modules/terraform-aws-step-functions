@@ -289,6 +289,8 @@ data "aws_iam_policy_document" "logs" {
       "logs:PutResourcePolicy",
       "logs:DescribeResourcePolicies",
       "logs:DescribeLogGroups",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
     ]
 
     resources = ["*"]
