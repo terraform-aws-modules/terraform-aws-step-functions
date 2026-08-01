@@ -21,7 +21,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.28 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | >= 2 |
@@ -30,7 +30,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.28 |
 | <a name="provider_null"></a> [null](#provider\_null) | >= 2 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 2 |
@@ -38,7 +38,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_disabled_step_function"></a> [disabled\_step\_function](#module\_disabled\_step\_function) | ../../ | n/a |
 | <a name="module_kms"></a> [kms](#module\_kms) | terraform-aws-modules/kms/aws | ~> 1.0 |
 | <a name="module_lambda_function"></a> [lambda\_function](#module\_lambda\_function) | terraform-aws-modules/lambda/aws | ~> 8.0 |
@@ -48,7 +48,7 @@ Note that this example may create resources which cost money. Run `terraform des
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_cloudwatch_log_group.external](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_sqs_queue.queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [null_resource.download_package](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
@@ -63,7 +63,7 @@ No inputs.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_cloudwatch_log_group_arn"></a> [cloudwatch\_log\_group\_arn](#output\_cloudwatch\_log\_group\_arn) | The ARN of the CloudWatch log group created for the Step Function |
 | <a name="output_cloudwatch_log_group_name"></a> [cloudwatch\_log\_group\_name](#output\_cloudwatch\_log\_group\_name) | The name of the CloudWatch log group created for the Step Function |
 | <a name="output_role_arn"></a> [role\_arn](#output\_role\_arn) | The ARN of the IAM role created for the State Machine |
