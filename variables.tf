@@ -269,6 +269,12 @@ variable "policies" {
   default     = []
 }
 
+variable "policy_name" {
+  description = "Name of the IAM policy to attach to the role"
+  type        = string
+  default     = null
+}
+
 variable "policy_statements" {
   description = "Map of dynamic policy statements to attach to IAM role"
   type        = any

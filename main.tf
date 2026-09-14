@@ -127,7 +127,7 @@ data "aws_iam_policy_document" "service" {
 resource "aws_iam_policy" "service" {
   for_each = { for k, v in var.service_integrations : k => v if local.create_role && var.attach_policies_for_integrations }
 
-  name   = "${local.role_name}-${each.key}"
+  name   = var.policy_name != null ? "${var.policy_name}-${each.key}" : "${local.role_name}-${each.key}"
   path   = var.policy_path
   policy = data.aws_iam_policy_document.service[each.key].json
   tags   = var.tags
@@ -149,7 +149,7 @@ resource "aws_iam_policy_attachment" "service" {
 resource "aws_iam_policy" "additional_json" {
   count = local.create_role && var.attach_policy_json ? 1 : 0
 
-  name   = local.role_name
+  name   = coalesce(var.policy_name, local.role_name)
   path   = var.policy_path
   policy = var.policy_json
   tags   = var.tags
@@ -170,7 +170,7 @@ resource "aws_iam_policy_attachment" "additional_json" {
 resource "aws_iam_policy" "additional_jsons" {
   count = local.create_role && var.attach_policy_jsons ? var.number_of_policy_jsons : 0
 
-  name   = "${local.role_name}-${count.index}"
+  name   = var.policy_name != null ? "${var.policy_name}-${count.index}" : "${local.role_name}-${count.index}"
   path   = var.policy_path
   policy = var.policy_jsons[count.index]
   tags   = var.tags
@@ -255,7 +255,7 @@ data "aws_iam_policy_document" "additional_inline" {
 resource "aws_iam_policy" "additional_inline" {
   count = local.create_role && var.attach_policy_statements ? 1 : 0
 
-  name   = "${local.role_name}-inline"
+  name   = var.policy_name != null ? "${var.policy_name}-inline" : "${local.role_name}-inline"
   path   = var.policy_path
   policy = data.aws_iam_policy_document.additional_inline[0].json
   tags   = var.tags
@@ -298,7 +298,7 @@ data "aws_iam_policy_document" "logs" {
 resource "aws_iam_policy" "logs" {
   count = local.create_role && local.enable_logging && var.attach_cloudwatch_logs_policy ? 1 : 0
 
-  name   = "${local.role_name}-logs"
+  name   = var.policy_name != null ? "${var.policy_name}-logs" : "${local.role_name}-logs"
   path   = var.policy_path
   policy = data.aws_iam_policy_document.logs[0].json
   tags   = var.tags
